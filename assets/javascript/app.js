@@ -14,7 +14,11 @@
   var database = firebase.database();
   var connectionsRef = database.ref("/connections");
   var connectedRef = database.ref(".info/connected");
-  var chat = database.ref("/chat");	
+  var chat = database.ref("/chat");
+  var playerOneRef;
+  var playerTwoRef;
+  var playerOneTemp;
+  var playerTwoTemp;
 
 //Connection check to disconnect when player leaves connection
   connectedRef.on("value", function(connect){
@@ -25,6 +29,8 @@
   });
 
   chat.set("");
+
+//Game Object
 
   var game = {
   	"rpsOption": ["rock", "paper", "scissor"],
@@ -47,6 +53,8 @@
 	"playerTwoExists": false,
 	"startable": false,
 	"result": "",
+
+	//Update on completing a round
 	"update" : {
 			"local": function(ref) {
 				console.log("remote", ref);					
@@ -70,4 +78,24 @@
 				$("#player-two-losses").text(game.playerTwo.losses);
 			},
 		},
+	//Start the game function	
+	"gameStart": function() {
+		$("#addName").on("click", function(event){
+			event.preventDefault();
+			game.playerOne.name = $("name-input").val().trim();
+			$("#player-one-name").text(game.playerOne.name);
+			$(".waiting-one").addClass("hidden");
+			game.databaseSet();
+		})
+	},
+
+	"databaseSet": function(){
+		database.ref("/connections").on("value", function(snapshot){
+			connect=snapshot.val();
+			if (connect.hasOwnProperty("player" + game.playerTwo.id)){
+				playerTwoRef = connectionsRef.child("player" + game.playerTwo.id);
+				playerTwoTemp = 
+			}
+		})
+	}
   }
