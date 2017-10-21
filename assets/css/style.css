@@ -1,0 +1,16 @@
+.container{
+	width:100%;
+	background-color: lightgreen;
+}
+
+header{
+	float:center;
+	width:90%;
+	margin: auto;
+}
+img{
+	margin: auto;
+	margin-top: 50px;
+	padding: 5px;
+	height: 120px;
+}
