@@ -4,44 +4,56 @@
 	<meta charset="UTF-8">
 	<title>RPS Multiplayer</title>
 	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Reset CSS -->
 	<link rel="stylesheet" href="assets/css/reset.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 	<!-- Firebase Reference -->
-	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
 </head>
 <body>
-	<div class="wrapper">
-		<img src="assets/images/header.png">
+	<div class="container">
+		<header id="head">
+			<img src="assets/images/rock.png" alt="rock" id="rock-img">
+			<img src="assets/images/paper-02.jpg" alt="paper" id="paper-img">
+			<img src="assets/images/scissors.png" alt="scissors" id="scissors-img">
+			<h1>Rock Paper Scissors</h1>
+		</header>
 		<div class="greeting">
 			<form id="name-form">
 				<input type="text" id="name-input" placeholder="Name">
 				<input id="addName" type="submit" value="Start">
 			</form>
 		</div>
-		<div class="holder-box">
+		<div class="play-area">
 			<div class="box player1">
+				<div class="player-1-name">
+				</div>
 				<div class="waiting">
 					<h1>Waiting for player 1</h1>
-					<i class="fa fa-spinner fa-spin fa-one-large fa-fw"></i>
 				</div>
-				<div class="score score1"></div>
+				<div class="score score1">
+					<div id="wins1">
+						<p>Wins: <span id="player-one-wins"></span>
+						</p>
+					</div>
+				</div>
 				<div class="choices1"></div>
 			</div>
-			<div class="results"></div>
+			<div class="results">
+			</div>
 			<div class="box player2">
 				<div class="waiting">
 					<h1>Waiting for player 2</h1>
-					<i class="fa fa-spinner fa-spin fa-one-large fa-fw"></i>
 				</div>
 				<div class="score score2"></div>
 				<div class="choices2"></div>
 			</div>
 		</div>
-		<div class="holder-messages">
-			<div id="messages"></div>
+		<div class="chatbox">
+			<div id="messages">
+			</div>
 			<form id="message-form">
 				<input type="text" id="message-input" placeholder="Message">
 				<input id="addMessage" type="submit" value="Send">

@@ -26,6 +26,50 @@
 
   chat.set("");
 
-  var game{
-  	
+  var game = {
+  	"rpsOption": ["rock", "paper", "scissor"],
+  	"playerOne": {
+  		"id": null,
+  		"name": null,
+  		"winCount": 0,
+  		"lossCount": 0,
+  		"choice": 0
+  	}
+  	"playerTwo":{
+  		"id": null,
+  		"name": null,
+  		"winCount": 0,
+  		"lossCount": 0,
+  		"choice": 0  		
+  	}
+	"playerOneExists": false,
+	"playerTwoExists": false,
+	"startable": false,
+	"result": "",
+	"update" : {
+			"remote": function(ref) {
+				console.log("remote", ref);					
+				$(".remotePlayerName").text(game.rP.name);
+				$(".remotePlayerID").text(game.rP.id);
+				$(".remotePlayerWins").text(game.rP.wins);
+				$('.remotePlayerLosses').text(game.rP.losses);
+			},
+			"local": function(ref) {
+				console.log('local', ref);
+				$(".localPlayerName").text(game.lP.name);
+				$(".localPlayerID").text(game.lP.id);
+				$(".localPlayerWins").text(game.lP.wins);
+				$('.localPlayerLosses').text(game.lP.losses);
+			},
+			"results": function (lRef , rRef) {
+				console.log('results',  lRef , rRef)
+				$('.localPlayerChoice').text(game.lP.choice);
+				$('.remotePlayerChoice').text(game.rP.choice);
+				$(".remotePlayerWins").text(game.rP.wins);
+				$('.remotePlayerLosses').text(game.rP.losses);
+				$('.localPlayerWins').text(game.lP.wins);
+				$('.localPlayerLosses').text(game.lP.losses);
+
+			},
+		},
   }
