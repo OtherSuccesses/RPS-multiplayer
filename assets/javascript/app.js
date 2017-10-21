@@ -34,42 +34,40 @@
   		"winCount": 0,
   		"lossCount": 0,
   		"choice": 0
-  	}
+  	},
   	"playerTwo":{
   		"id": null,
   		"name": null,
   		"winCount": 0,
   		"lossCount": 0,
   		"choice": 0  		
-  	}
+  	},
+  	"round": 0,
 	"playerOneExists": false,
 	"playerTwoExists": false,
 	"startable": false,
 	"result": "",
 	"update" : {
-			"remote": function(ref) {
-				console.log("remote", ref);					
-				$(".remotePlayerName").text(game.rP.name);
-				$(".remotePlayerID").text(game.rP.id);
-				$(".remotePlayerWins").text(game.rP.wins);
-				$('.remotePlayerLosses').text(game.rP.losses);
-			},
 			"local": function(ref) {
-				console.log('local', ref);
-				$(".localPlayerName").text(game.lP.name);
-				$(".localPlayerID").text(game.lP.id);
-				$(".localPlayerWins").text(game.lP.wins);
-				$('.localPlayerLosses').text(game.lP.losses);
+				console.log("remote", ref);					
+				$("#player-1-name").text(game.playerOne.name);
+				$("#player-one-wins").text(game.playerOne.winCount);
+				$("#player-one-losses").text(game.playerOne.lossCount);
 			},
-			"results": function (lRef , rRef) {
-				console.log('results',  lRef , rRef)
-				$('.localPlayerChoice').text(game.lP.choice);
-				$('.remotePlayerChoice').text(game.rP.choice);
-				$(".remotePlayerWins").text(game.rP.wins);
-				$('.remotePlayerLosses').text(game.rP.losses);
-				$('.localPlayerWins').text(game.lP.wins);
-				$('.localPlayerLosses').text(game.lP.losses);
-
+			"remote": function(ref) {
+				console.log("local", ref);
+				$("#player-2-name").text(game.playerTwo.name);
+				$("#player-two-wins").text(game.playerTwo.winCount);
+				$("#player-two-losses").text(game.playerTwo.lossCount);
+			},
+			"results": function (local , remote) {
+				console.log("results",  local , remote)
+				$(".choices1").text(game.playerOne.choice);
+				$("#player-one-wins").text(game.playerOne.wins);
+				$("#player-one-losses").text(game.playerOne.losses);
+				$(".choices2").text(game.playerTwo.choice);
+				$("#player-two-wins").text(game.playerTwo.wins);
+				$("#player-two-losses").text(game.playerTwo.losses);
 			},
 		},
   }
